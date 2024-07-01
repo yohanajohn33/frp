@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App and Settings Launcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>App and Settings Launcher</h1>
+
+  <!-- Buttons for different actions -->
+  <button class="button" onclick="openApp('https://play.google.com/store')">Open Google Play</button>
+  <button class="button" onclick="openApp('mailto:')">Open Email</button>
+  <button class="button" onclick="openApp('samsungapps://ProductDetail/com.samsung.android.ipservice')">Open Alliance Shield (Samsung Store)</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.app.camera')">Open QR Camera</button>
+  <button class="button" onclick="openApp('tel:*#85#')">Open Dialer (Code: *#85#)</button>
+  <button class="button" onclick="openApp('https://play.google.com/store/apps/details?id=com.samsung.android.app.sbrowser')">Open Samsung Internet (Google Play)</button>
+  <button class="button" onclick="openApp('package:xshare.app')">Open XShare App</button>
+  <button class="button" onclick="openApp('package:fileshorts.app')">Open File Shorts App</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.app.safetyhub')">Open Alliance Shield (Samsung Store)</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.app.galaxyfinder')">Open Activity Manager (Samsung Store)</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.app.sharelive')">Open XShare (Samsung Store)</button>
+  <button class="button" onclick="openApp('package:com.sec.android.app.myfiles')">Open Samsung My Files (Samsung Store)</button>
+  <button class="button" onclick="openApp('package:com.sec.android.app.smartswitch')">Open Samsung Smart Switch App</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.settings')">Open Settings App</button>
+  <button class="button" onclick="openApp('package:com.sec.android.app.simsettingmgr')">Open SIM Card Manager (Samsung Store)</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.app.sbrowser')">Open Samsung Internet (Samsung Store)</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.app.appsearch')">Open AppSearch (Samsung Store)</button>
+  <button class="button" onclick="openApp('package:com.sec.android.app.clockpackage')">Open Clock App</button>
+  <button class="button" onclick="openApp('package:com.sec.android.app.popupcalculator')">Open Calculator App</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.email.provider')">Open Email App</button>
+  <button class="button" onclick="openApp('package:com.android.dialer')">Open Phone Dialer</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.contacts')">Open Contacts</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.calendar')">Open Calendar</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.messaging')">Open Messages</button>
+  <button class="button" onclick="openApp('package:com.sec.android.app.popupcalculator')">Open Calculator</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Smart Switch</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Device Care</button>
+  <button class="button" onclick="openApp('package:com.sec.android.app.popupcalculator')">Open Calculator</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Smart Switch</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Smart Switch</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Smart Switch</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Smart Switch</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Smart Switch</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Smart Switch</button>
+  <button class="button" onclick="openApp('package:com.samsung.android.smartswitch')">Open Smart Switch</button>
+
+  <script>
+    function openApp(url) {
+      if (url.startsWith('https://') || url.startsWith('http://') || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('samsungapps://') || url.startsWith('market://') || url.startsWith('intent:')) {
+        // Handle standard web URLs, mailto, tel, Samsung Store (samsungapps://), and Google Play (market://)
+        window.location.href = url;
+      } else if (url.startsWith('package:')) {
+        // Handle Android package intents
+        // Strip 'package:' prefix
+        var packageName = url.substr('package:'.length);
+        try {
+          // Try to launch the app using an intent URI
+          window.location.href = 'intent://' + packageName + '#Intent;end';
+        } catch (error) {
+          console.error('Error launching app:', error);
+        }
+      } else {
+        console.error('Unsupported URL format:', url);
+        // Optionally handle unsupported URL formats
+      }
+    }
+  </script>
+</body>
+</html>
